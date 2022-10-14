@@ -1,2 +1,2 @@
 #!/bin/bash
-prinf "Best School\n" > "\*\\'"Best School"\'\\*$\?\*\*\*\*\*:)"
+prinf "Best School\n" > '\*\\'"Best School"\'\\*$\?\*\*\*\*\*:)'
