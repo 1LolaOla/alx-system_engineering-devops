@@ -1,0 +1,7 @@
+# SSH client configuration
+
+# Use the private key located at ~/.ssh/school
+IdentityFile ~/.ssh/school
+
+# Disable password authentication
+PasswordAuthentication no
