@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Update package list
+apt-get update
+
+# Install Nginx
+apt-get install -y nginx
+
+# Configure Nginx to listen on port 80
+sed -i "s/listen\s*80;/listen 80 default_server;/g" /etc/nginx/sites-available/default
+
+# Restart Nginx
+service nginx restart
+
+# Create a simple HTML file containing "Hello World!"
+echo "<!DOCTYPE html>
+<html>
+<head>
+<title>Hello World!</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+<p>This is a test page served by Nginx.</p>
+</body>
+</html>" > /var/www/html/index.html
+
+# Test Nginx by requesting the page at the server's IP address
+curl -s "http://localhost" | grep "Hello World!"
