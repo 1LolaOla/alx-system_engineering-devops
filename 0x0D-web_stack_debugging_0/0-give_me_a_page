@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# run apache on holbertonschool/265-0 container
+
+cat /etc/apache2/sites-enabled/000-default.conf
