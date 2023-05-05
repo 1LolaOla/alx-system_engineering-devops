@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
-# This script configures Nginx to listen on port 80
 
-# Start Nginx if it's not running
-sudo systemctl start nginx
-
-# Set Nginx configuration to listen on port 80
-sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-enabled/default
-
-# Allow port 80 in the firewall
-sudo ufw allow 80/tcp
-
-# Restart Nginx
-sudo systemctl restart nginx
+service nginx start
+sleep 5
+curl 0:80
+service nginx status | grep "not running" > /dev/null && echo "nginx is not running"
