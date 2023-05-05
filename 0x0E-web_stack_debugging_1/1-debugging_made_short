@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-service nginx start
-sleep 5
-curl 0:80
-service nginx status | grep "not running" > /dev/null && echo "nginx is not running"
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
+echo "" > /run/nginx.pid
