@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sed -i 's/user\s*\(.*\);/user nginx;/' /etc/nginx/nginx.conf
+chown -R nginx:nginx /var/www/html
+service nginx start
