@@ -7,30 +7,18 @@ import requests
 from sys import argv
 
 
-if __name__ == "__main__":
-    if len(argv) < 2:
-        print("Usage: {} <employee_id>".format(argv[0]))
-        exit(1)
+if __name__ == "__main__:
 
-    employee_id = argv[1]
+    endpoint = 'https://jsonplaceholder.typicode.com'
+    user_res = requests.get(endpoint + '/users/' + argv[1]).json()
 
-    # Fetch user information
-    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
-    user_response = requests.get(user_url)
-    user_data = user_response.json()
-    employee_name = user_data.get("name")
+    # get total number of tasks [used to get len of all tasks in line 18]
+    todos = requests.get(endpoint + '/todos?userId=' + argv[1]).json()
 
-    # Fetch user's todo list
-    todos_url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(employee_id)
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
+    # get number completed tasks and their titles
+    titles_done = [todo['title'] for todo in todos if todo['completed']]
 
-    # Calculate completed and total tasks
-    total_tasks = len(todos_data)
-    completed_tasks = [task for task in todos_data if task.get("completed")]
-    num_completed_tasks = len(completed_tasks)
+    print('Employee {} is done with tasks({}/{}):'
+          .format(user_res['name'], len(titles_done), len(todos)))
 
-    # Print progress information
-    print("Employee {} is done with tasks({}/{}):".format(employee_name, num_completed_tasks, total_tasks))
-    for task in completed_tasks:
-        print("\t {}".format(task.get("title")))
+    [print('\t {}'.format(title)) for title in titles_done]
