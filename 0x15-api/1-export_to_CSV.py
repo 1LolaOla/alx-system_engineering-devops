@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 ''' export data in the CSV format '''
-from sys import argv
+
 from requests import get
 import csv
-
+from sys import argv
 
 if __name__ == '__main__':
     endpoint = 'https://jsonplaceholder.typicode.com'
@@ -13,4 +13,4 @@ if __name__ == '__main__':
     with open('{}.csv'.format(argv[1]), 'w') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for todo in todos:
-            writer.writerow([argv[1], usr, todo['completed'], todo['title']]):wq
+            writer.writerow([argv[1], usr, todo['completed'], todo['title']]
