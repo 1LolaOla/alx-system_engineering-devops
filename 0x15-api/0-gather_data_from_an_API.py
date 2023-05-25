@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """
-using a REST API, retrieve info about an employee's TODO list
+using a REST API, retrieves an employee's TODO list info
 """
 
 import sys
 import requests
+
 
 def get_employee_todo_progress(employee_id):
     """
