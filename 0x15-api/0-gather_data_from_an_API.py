@@ -6,11 +6,13 @@ using a REST API, retrieve info about an employee's TODO list
 import sys
 import requests
 
-
 def get_employee_todo_progress(employee_id):
     """
     Retrieves and displays the employee's TODO list progress.
     """
+    import requests
+    import sys
+
     # API endpoint URL
     url = 'https://jsonplaceholder.typicode.com'
 
