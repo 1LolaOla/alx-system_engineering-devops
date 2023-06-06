@@ -1,0 +1,6 @@
+#!/bin/bash
+apt-get update
+apt-get -y install nginx
+sed -i "s/80 default_server/80/g" /etc/nginx/sites-available/default
+echo "daemon off;" >> /etc/nginx/nginx.conf
+service nginx start

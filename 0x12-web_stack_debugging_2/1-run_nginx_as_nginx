@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Update Nginx configuration to run as nginx user
+sed -i 's/user\s*\(.*\);/user nginx;/' /etc/nginx/nginx.conf
+
+# Modify permissions to allow nginx user to access necessary files
+chown -R nginx:nginx /var/www/html
+
+# Start Nginx service
+service nginx start
+
+# Verify that Nginx is running as nginx user and listening on port 8080
+ps aux | grep nginx
+nc -z -v 0 8080
