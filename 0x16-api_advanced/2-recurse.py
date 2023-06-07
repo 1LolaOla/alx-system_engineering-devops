@@ -16,7 +16,7 @@ def recurse(subreddit, hot_list=[], after=None):
     If no results are found for the subreddit, returns None.
     """
 
-     headers = {"User-Agent": "user_agent"}
+    headers = {"User-Agent": "user_agent"}
     url = "https://www.reddit.com/r/{}/hot.json".format(
         subreddit)
     params = {"limit": 100, "after": after}
