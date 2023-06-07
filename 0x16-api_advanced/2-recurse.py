@@ -9,7 +9,7 @@ import requests
 import sys
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def recurse(subreddit, hot_list=[], after=None,):
     """
     Recursively queries the Reddit API and appends the titles
     of all hot articles for a given subreddit to the hot_list.
