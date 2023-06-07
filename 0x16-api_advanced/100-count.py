@@ -7,7 +7,8 @@ import sys
 def count_words(subreddit, wordlist, hot_list=[], after=None,):
     """function that queries the Reddit API and prints
     the titles of the first 10 hot posts listed for a given subreddit."""
-     headers = {"User-Agent": "user_agent"}
+    
+    headers = {"User-Agent": "user_agent"}
     url = "https://www.reddit.com/r/{}/hot.json".format(
         subreddit)
     params = {"limit": 100, "after": after}
