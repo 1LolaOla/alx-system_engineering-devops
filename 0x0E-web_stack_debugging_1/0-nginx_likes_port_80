@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/bin/bash
 
 # Install Nginx
@@ -12,3 +13,11 @@ sudo sed -i 's/listen \[::\]:80 default_server;/listen 80;/g' /etc/nginx/sites-a
 
 # Restart Nginx to apply the changes
 sudo systemctl restart nginx
+=======
+#!/usr/bin/env bash
+# configure nginx to run and listen to port 80
+
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
+>>>>>>> f3e2f47f2a1e7c83cd028f821be4cc8304ecf44e
