@@ -5,6 +5,7 @@ of the first 10 hot posts listed for a given subreddit.
 """
 
 import requests
+import sys
 
 
 def top_ten(subreddit):
@@ -13,31 +14,23 @@ def top_ten(subreddit):
     listed for a given subreddit.
     If the subreddit is invalid, prints None.
     """
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {"User-Agent": "Custom User Agent"}
-
-    response = requests.get(url, headers=headers, allow_redirects=False)
-
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+    headers = {"User-Agent": "user_agent"}
+    response = requests.get(
+        url=url,
+        headers=headers,
+        allow_redirects=False)
     if response.status_code == 200:
-        data = response.json().get("data")
-        if data:
-            children = data.get("children")
-            if children:
-                for post in children:
-                    print(post.get("data", {}).get("title"))
-            else:
-                print("No posts found.")
-        else:
-            print("Subreddit not found.")
+        data = response.json()['data']
+        children = data['children']
+        for child in children:
+            title = child['data']['title']
+            print(title)
     else:
-        print("Request failed.")
+        print("None")
 
 
-if __name__ == "__main__":
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        top_ten(sys.argv[1])
-
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        subred = sys.argv[1]
+        top_ten(subred)
