@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # add rules to one of these chains:
+=======
+# rules should be added to one of these chains:
+>>>>>>> af893637cc2a9df47d14df44cb1d79c3ea69b668
 #   ufw-before-input
 #   ufw-before-output
 #   ufw-before-forward

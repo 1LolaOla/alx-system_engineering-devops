@@ -1,5 +1,14 @@
+<<<<<<< HEAD
+#!/bin/bash
+apt-get update
+apt-get -y install nginx
+sed -i "s/80 default_server/80/g" /etc/nginx/sites-available/default
+echo "daemon off;" >> /etc/nginx/nginx.conf
+service nginx start
+=======
 #!/usr/bin/env bash
 # configures nginx to run and listen to port 80
 sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 service nginx restart
 echo "" > /run/nginx.pid
+>>>>>>> f3e2f47f2a1e7c83cd028f821be4cc8304ecf44e

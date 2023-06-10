@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """Advanced Apis Module"""
 import requests
 import sys
@@ -13,6 +14,27 @@ def number_of_subscribers(subreddit):
     headers = {"User-Agent": "user_agent"}
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     response = requests.get(
+=======
+"""
+Queries the Reddit API and returns number of subscrbers
+not active users, total subscribers for a given subreddit
+If an invalid subreddit is given, the function returns 0.
+"""
+
+import requests
+import sys
+
+def number_of_subscribers(subreddit):
+    """
+    Returns the number of subscribers
+    not active users, total subscribers for a given subreddit.
+    If the subreddit is invalid, returns 0.
+    """
+
+    headers = {"User-Agent": "user_agent"}
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    response = requests.get(   
+>>>>>>> af893637cc2a9df47d14df44cb1d79c3ea69b668
         url=url,
         headers=headers,
         allow_redirects=False)

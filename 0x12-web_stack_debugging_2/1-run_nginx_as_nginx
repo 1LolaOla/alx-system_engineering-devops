@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
+
+# Update Nginx configuration to run as nginx user
+sed -i 's/user\s*\(.*\);/user nginx;/' /etc/nginx/nginx.conf
+
+# Modify permissions to allow nginx user to access necessary files
+chown -R nginx:nginx /var/www/html
+
+# Start Nginx service
+service nginx start
+
+# Verify that Nginx is running as nginx user and listening on port 8080
+ps aux | grep nginx
+nc -z -v 0 8080
+=======
 # Update Nginx configuration to run as nginx user
 # Modify permissions to allow nginx user to access necessary files
 pkill -f apache2
@@ -6,3 +21,4 @@ chmod 644 /etc/nginx/nginx.conf
 sed -i "1i user nginx;" /etc/nginx/nginx.conf
 sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
 sudo -u nginx service nginx restart
+>>>>>>> f3e2f47f2a1e7c83cd028f821be4cc8304ecf44e
